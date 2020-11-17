@@ -1,5 +1,100 @@
 <html>
+  <head>
+    <title>{% block title %} AR-Sudoku {% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+      @import  url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+      body{
+        margin: 0;
+        padding: 0;
+        font-family: 'Montserrat', sans-serif;
+        background-color: #161616;
+        color: white; 
+      }
+      ul{
+        list-style: none;
+      }
+      li{
+        display: inline;
+        padding: 0 2rem;
+      }
+      li a{
+        text-decoration: none;
+        color: #54dcf2;
+      }
+
+      .nav-container{
+        position: fixed;
+        width: 100%;
+        background-color: #161616;
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #54dcf2;
+      }
+
+      .nav-container nav{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 2rem 10% ;
+      }
+
+      .container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 15vh 5vw 5vh 10vw;
+        height: 70vh;
+      }
+
+      .img-container, .button-container{
+        text-align: center;
+      }
+      .img-container{
+        width: 60%;
+
+      }
+      .button-container{
+        width: 80%;
+      }
+      .btn{
+        font-family: 'Montserrat', sans-serif;
+        background-color: #fa788d;
+        border-radius: 5px;
+        border: none;
+        padding: 0.5rem 2rem;
+        font-weight: 700;
+      }
+      .btn:focus{
+        border: none;
+        background-color: #54dcf2;
+        outline: none;
+      }
+      .btn:hover{
+        border: none;
+        background-color: #54dcf2;
+      }
+    </style>
+  </head>
   <body>
-    <img id="bg" src="{{ url_for('video_feed') }}">
+    {% block content %}
+    <div class="nav-container">
+      <nav>
+        <span class="brand">
+          AR Sudoku
+        </span>
+      </nav>
+    </div>
+
+    <div class="container">
+      <div class="img-container">
+        <img id="bg" src="{{ url_for('video_feed') }}">
+      </div>
+      <div class="button-container">
+        <button class="btn" id="scan">Scan</button><br><br>
+        <button class="btn" id="import">Import</button>
+      </div>
+    </div>
+    {% endblock %}
   </body>
 </html>
